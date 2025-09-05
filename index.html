@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Tool</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Project Management Tool</h1>
+      <div class="subtitle">Add tasks, drag & drop between columns, open a card to add description or comments.</div>
+      <div class="toolbar">
+        <input id="taskTitle" class="input" placeholder="Task title e.g. Design homepage" />
+        <input id="taskAssignee" class="input" placeholder="Assignee e.g. Muskan" />
+        <input id="taskDue" class="input" type="date" />
+        <button id="addTaskBtn" class="btn btn-primary">+ Add Task</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="board" id="board">
+    <section class="column" data-status="todo">
+      <div class="col-head"><span class="col-title">To Do</span><span class="count" id="count-todo">0</span></div>
+      <div class="cards" id="col-todo"></div>
+      <div class="dropzone" id="dz-todo">Drop here</div>
+    </section>
+
+    <section class="column" data-status="doing">
+      <div class="col-head"><span class="col-title">In Progress</span><span class="count" id="count-doing">0</span></div>
+      <div class="cards" id="col-doing"></div>
+      <div class="dropzone" id="dz-doing">Drop here</div>
+    </section>
+
+    <section class="column" data-status="done">
+      <div class="col-head"><span class="col-title">Done</span><span class="count" id="count-done">0</span></div>
+      <div class="cards" id="col-done"></div>
+      <div class="dropzone" id="dz-done">Drop here</div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <h3 id="modalTitle">Edit Task</h3>
+      <div class="row">
+        <div>
+          <label>Title</label>
+          <input id="mTitle" class="input" />
+        </div>
+        <div>
+          <label>Assignee</label>
+          <input id="mAssignee" class="input" />
+        </div>
+      </div>
+      <div class="row" style="margin-top:10px;">
+        <div>
+          <label>Due date</label>
+          <input id="mDue" class="input" type="date" />
+        </div>
+        <div>
+          <label>Status</label>
+          <select id="mStatus" class="input">
+            <option value="todo">To Do</option>
+            <option value="doing">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top:10px;">
+        <label>Description</label>
+        <textarea id="mDesc" class="input" placeholder="Write details..."></textarea>
+      </div>
+
+      <div style="margin-top:10px;">
+        <label>Comments</label>
+        <div id="comments" style="display:grid; gap:8px; margin:8px 0 6px;"></div>
+        <div style="display:flex; gap:8px;">
+          <input id="cAuthor" class="input" placeholder="Your name" />
+          <input id="cText" class="input" placeholder="Write a comment" />
+          <button id="addComment" class="btn btn-ghost">Add</button>
+        </div>
+      </div>
+
+      <div class="footer">
+        <button id="deleteTask" class="btn btn-mini btn-danger">Delete Task</button>
+        <div style="display:flex; gap:8px;">
+          <button id="closeModal" class="btn btn-ghost">Cancel</button>
+          <button id="saveTask" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
